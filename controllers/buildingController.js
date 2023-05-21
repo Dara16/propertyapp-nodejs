@@ -9,9 +9,9 @@ const getBuildings = (req, res, next) => {
 
 const createBuilding = (req, res, next) => {
     res
-    .status(200)
+    .status(201)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: `Created apartment with number: ${req.body.buildingName}` })
+    .json({ message: `Created building with name: ${req.body.buildingName} and address: ${req.body.address}` })
 }
 
 const deleteBuildings = (req, res, next) => {
