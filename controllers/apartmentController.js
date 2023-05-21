@@ -21,8 +21,33 @@ const deleteApartments = (req, res, next) => {
     .json({ message: 'Deleting all the apartments!' })
 }
 
+// For 'apartment/:apartmentId'
+const getApartment = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Show me the apartment with apartment id: ${req.params.apartmentId}!` })
+}
+
+const updateApartment = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Update the apartment with apartment id: ${req.params.apartmentId}!` })
+}
+
+const deleteApartment = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Delete the apartment with apartment id: ${req.params.apartmentId}!` })
+}
+
 module.exports = {
     getApartments,
     createApartment,
-    deleteApartments
+    deleteApartments,
+    getApartment,
+    updateApartment,
+    deleteApartment
 }
