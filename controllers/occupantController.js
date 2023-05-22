@@ -21,8 +21,33 @@ const deleteOccupants = (req, res, next) => {
     .json({ message: 'Deleting all the occupants!' })
 }
 
+// For occupant/:occupantId
+const getOccupant = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Show me the occupant with occupant id: ${req.params.occupantId}!` })
+}
+
+const updateOccupant = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Update the occupant with occupant id: ${req.params.occupantId}!` })
+}
+
+const deleteOccupant = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Delete the occupant with occupant id: ${req.params.occupantId}!` })
+}
+
 module.exports = {
     getOccupants,
     createOccupant,
-    deleteOccupants
+    deleteOccupants,
+    getOccupant,
+    updateOccupant,
+    deleteOccupant
 }
