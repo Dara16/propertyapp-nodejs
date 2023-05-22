@@ -21,8 +21,33 @@ const deleteBuildings = (req, res, next) => {
     .json({ message: 'Deleting all the buildings!' })
 }
 
+// For 'building/:buildingId
+const getBuilding = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Show me the building with building id: ${req.params.buildingId}!` })
+}
+
+const updateBuilding = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Updated the building with building id: ${req.params.buildingId}!` })
+}
+
+const deleteBuilding = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({ message: `Deleted the building with building id: ${req.params.buildingId}!` })
+}
+
 module.exports = {
     getBuildings,
     createBuilding,
-    deleteBuildings
+    deleteBuildings,
+    getBuilding,
+    updateBuilding,
+    deleteBuilding
 }
