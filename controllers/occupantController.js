@@ -1,6 +1,31 @@
 // For '/occupant endpoints
 
 const getOccupants = (req, res, next) => {
+    // query parameter
+    if (Object.keys(req.query).length) {
+        const {
+            name,
+            gender,
+            apartment,
+            leaseEnd,
+            email,
+            phoneNumber
+        } = req.query
+
+        const filter = []
+
+        if (name) filter.push(name)
+        if (gender) filter.push(gender)
+        if (apartment) filter.push(apartment)
+        if (leaseEnd) filter.push(leaseEnd)
+        if (email) filter.push(email)
+        if (phoneNumber) filter.push(phoneNumber)
+
+        for (const query of filter) {
+            console.log(`Searching by ${query}`)
+        }
+    }
+
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')

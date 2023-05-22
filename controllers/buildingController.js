@@ -1,6 +1,23 @@
 // For '/building endpoints
 
 const getBuildings = (req, res, next) => {
+    //query parameter
+    if (Object.keys(req.query).length) {
+        const {
+            name,
+            address
+        } = req.query
+
+        const filter = []
+
+        if (name) filter.push(name)
+        if (address) filter.push(address)
+
+        for (const query of filter) {
+            console.log(`Searching by ${query}`)
+        }
+    }
+
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
