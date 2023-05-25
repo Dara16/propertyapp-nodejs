@@ -5,9 +5,12 @@ const apartment = require('./routes/apartment');
 const building = require('./routes/building');
 const occupant = require('./routes/occupant');
 const logger = require('./middlewares/logger');
-const errorHandler = require('./middlewares/error')
+const errorHandler = require('./middlewares/error');
+const connectDB = require('./config/db')
 
 dotenv.config({ path: './config/config.env' });
+
+connectDB()
 
 const app = express();
 
