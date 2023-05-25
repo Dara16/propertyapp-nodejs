@@ -3,7 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const apartment = require('./routes/apartment');
 const building = require('./routes/building');
-const occupant = require('./routes/occupant');
+const user = require('./routes/user');
 const logger = require('./middlewares/logger');
 const errorHandler = require('./middlewares/error');
 const connectDB = require('./config/db')
@@ -22,7 +22,7 @@ app.use(errorHandler)
 
 app.use('/apartment', apartment)
 app.use('/building', building)
-app.use('/occupant', occupant)
+app.use('/user', user)
 
 const PORT = process.env.PORT || 5001
 

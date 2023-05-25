@@ -1,6 +1,6 @@
-// For '/occupant endpoints
+// For '/user endpoints
 
-const getOccupants = (req, res, next) => {
+const getUsers = (req, res, next) => {
     // query parameter
     if (Object.keys(req.query).length) {
         const {
@@ -29,50 +29,50 @@ const getOccupants = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: 'Show me all the occupants!' })
+    .json({ message: 'Show me all the users!' })
 }
 
-const createOccupant = (req, res, next) => {
+const createUser = (req, res, next) => {
     res
     .status(201)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: `Created occupant with name: ${req.body.occupantName} and gender: ${req.body.gender}` })
+    .json({ message: `Created user with name: ${req.body.userName} and gender: ${req.body.gender}` })
 }
 
-const deleteOccupants = (req, res, next) => {
+const deleteUsers = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: 'Deleting all the occupants!' })
+    .json({ message: 'Deleting all the users!' })
 }
 
-// For occupant/:occupantId
-const getOccupant = (req, res, next) => {
+// For User/:UserId
+const getUser = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: `Show me the occupant with occupant id: ${req.params.occupantId}!` })
+    .json({ message: `Show me the user with user id: ${req.params.userId}!` })
 }
 
-const updateOccupant = (req, res, next) => {
+const updateUser = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: `Update the occupant with occupant id: ${req.params.occupantId}!` })
+    .json({ message: `Update the user with user id: ${req.params.userId}!` })
 }
 
-const deleteOccupant = (req, res, next) => {
+const deleteUser = (req, res, next) => {
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
-    .json({ message: `Delete the occupant with occupant id: ${req.params.occupantId}!` })
+    .json({ message: `Delete the user with user id: ${req.params.userId}!` })
 }
 
 module.exports = {
-    getOccupants,
-    createOccupant,
-    deleteOccupants,
-    getOccupant,
-    updateOccupant,
-    deleteOccupant
+    getUsers,
+    createUser,
+    deleteUsers,
+    getUser,
+    updateUser,
+    deleteUser
 }
