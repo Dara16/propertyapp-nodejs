@@ -13,6 +13,10 @@ const ApartmentSchema = new Schema({
     building: {
         type: String,
         required: true
+    },
+    isOccupied: {
+        type: Boolean,
+        required: true
     }
 },{
     timestamps: true
