@@ -1,5 +1,6 @@
-// For '/user endpoints
+const User = require('../models/User')
 
+// For '/user endpoints
 const getUsers = (req, res, next) => {
     // query parameter
     if (Object.keys(req.query).length) {
