@@ -1,6 +1,8 @@
+const Building = require('../models/Building')
+
 // For '/building endpoints
 
-const getBuildings = (req, res, next) => {
+const getBuildings = async (req, res, next) => {
     //query parameter
     if (Object.keys(req.query).length) {
         const {
@@ -18,46 +20,84 @@ const getBuildings = (req, res, next) => {
         }
     }
 
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: 'Show me all the buildings!' })
+    try {
+        const buildings = await Building.find()
+        
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(buildings)
+    
+    } catch (err) {
+        next(err)
+    }
+
 }
 
-const createBuilding = (req, res, next) => {
-    res
-    .status(201)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: `Created building with name: ${req.body.buildingName} and address: ${req.body.address}` })
+const createBuilding = async (req, res, next) => {
+    try {
+        const newBuilding = await Building.create(req.body)
+        
+        res
+        .status(201)
+        .setHeader('Content-Type', 'application/json')
+        .json(newBuilding)
+    } catch (err) {
+        next(err)
+    }
 }
 
-const deleteBuildings = (req, res, next) => {
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: 'Deleting all the buildings!' })
+const deleteBuildings = async (req, res, next) => {
+    try {
+        const deletedBuildings = await Building.deleteMany()
+        
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(deletedBuildings)
+    } catch (err) {
+        next(err)
+    }
 }
 
 // For 'building/:buildingId
-const getBuilding = (req, res, next) => {
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: `Show me the building with building id: ${req.params.buildingId}!` })
+const getBuilding = async (req, res, next) => {
+    try {
+        const building = await Building.findById(req.params.buildingId)
+        
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(building)
+    } catch (err) {
+        next(err)
+    }
 }
 
-const updateBuilding = (req, res, next) => {
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: `Updated the building with building id: ${req.params.buildingId}!` })
+const updateBuilding = async (req, res, next) => {
+    try {
+       const updatedBuilding = await Building.findByIdAndUpdate(req.params.buildingId, req.body, { new: true }) 
+       
+       res
+       .status(200)
+       .setHeader('Content-Type', 'application/json')
+       .json(updatedBuilding)
+    } catch (err) {
+        next(err)
+    }
 }
 
-const deleteBuilding = (req, res, next) => {
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: `Deleted the building with building id: ${req.params.buildingId}!` })
+const deleteBuilding = async (req, res, next) => {
+    try {
+        const deletedBuilding = await Building.findByIdAndDelete(req.params.buildingId)
+        
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(deletedBuilding)
+    } catch (err) {
+        next(err)
+    }
 }
 
 module.exports = {
