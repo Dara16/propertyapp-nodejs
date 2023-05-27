@@ -17,6 +17,10 @@ const UserSchema = new Schema({
         required: true,
 
     },
+    phone: {
+        type: String,
+        maxLength: 15
+    },
     admin: {
         type: Boolean,
         default: false
@@ -41,8 +45,9 @@ const UserSchema = new Schema({
             'female' 
         ]
     },
-    apartmentNumber: {
+    apartment: {
         type: Number,
+        maxLength: 5
     },
     leaseEnd: {
         type: Date,
