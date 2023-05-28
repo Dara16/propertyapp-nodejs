@@ -5,7 +5,7 @@ const BuildingSchema = new Schema({
     name: {
         type: String,
         required: true,
-        maxLength: 20
+        maxLength: [20, 'Building name cannot exceed 20 characters!']
     },
     address: {
         type: String,

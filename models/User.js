@@ -1,25 +1,27 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const validator = require('validator');
 
 const UserSchema = new Schema({
     userName: {
         type: String,
-        required: true,
-        unique: true,
-        maxLength: 15
+        required: [true, 'User name is required!'],
+        unique: [true, 'Try again! This username has already been taken'],
+        maxLength: [15, 'User name cannot exceed 15 characters!']
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        validate: (email) => validator.isEmail(email)
     },
     password: {
         type: String,
         required: true,
-
+        validate: (password) => validator.isStrongPassword(password)
     },
     phone: {
         type: String,
-        maxLength: 15
+        maxLength: [15, 'Phone number cannot exceed 15 digits!']
     },
     admin: {
         type: Boolean,
@@ -28,12 +30,12 @@ const UserSchema = new Schema({
     firstName: {
         type: String,
         required: true,
-        maxLength: 15
+        maxLength: [15, 'First name cannot exceed 15 characters!']
     },
     lastName: {
         type: String,
         required: true,
-        maxLength: 15
+        maxLength: [15, 'Last name cannot exceed 15 characters!']
     },
     gender: {
         type: String,
